@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,500,700);
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+body {
+    height: 100vh;
+    background: whitesmoke;
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    background: linear-gradient(to right, #243B55, #141E30);
+    color: rgb(233, 237, 243);
+    
+}
+
+.cnb_header {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.cnb_header h1 {
+    font-size: 300%;
+    font-weight: 700;
+    padding: 30px 20px 0 20px;
+}
+
+.cnb_header h1:after {
+    content: "";
+    background: whitesmoke;
+    display: block;
+    height: 4px;
+    width: 450px;
+    margin: auto;
+}
+
+.cnb_submit {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cnb_submit button{
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to right, rgb(138, 202, 140), rgb(81, 172, 84), #4CAF50,  #4CAF50, rgb(138, 202, 140));
+    font-weight: 500;
+    width: 250px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 30px;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.cnb_form {
+    padding: 0 30px;
+    font-size: 200%;
+}
+
+
+.cnb_form input {
+    width: 100%;
+    border: 2px solid rgb(53, 52, 52);
+}
+
+.cnb_form span {
+    padding-bottom: 6px; 
+}
+
+.ck{
+    outline: 2px solid rgb(53, 52, 52);
+}
+

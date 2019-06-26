@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/scss/login.css">
+<!--===============================================================================================-->
+</head>
+<body id="particles-js">
+	
+	<div class="login-page">
+		<div class="form">
+			<form class="login-form" action="/admin/register" method="POST" enctype="multipart/form-data">
+                <% include ./partials/messages %>
+				<input name="regNo" type="text" placeholder="Registration Number" required/>
+				<input name="username" type="text" placeholder="Username" required/>
+				<input name="email" type="email" placeholder="Email" required/>
+				<input name="password" type="password" placeholder="Password" required/>
+				<input name="confirmPassword" type="password" placeholder="Confirm Password" required/>
+
+				<div class="propic">
+					<button> Upload a profile picture </button>
+					<input type="file" name="image" required>
+				</div>
+				<button class="submit">Register</button>
+                <div style="text-align: center; letter-spacing: 1.5px;">
+					<p class="message">Already have an account? <a href="/admin/login">Sign in here.</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+    <% include ./partials/disappearFlask %>
+    <% include ./partials/particlejs %>  
+     <!-- id="particles-js" -->
+
+</body>
+</html>

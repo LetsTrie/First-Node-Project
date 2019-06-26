@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Create New Password</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/scss/login.css">
+<!--===============================================================================================-->
+</head>
+<body id="particles-js">
+	
+	<div class="login-page">
+		<div class="form">
+			<form class="login-form" method="POST" action="/admin/newpass">
+				 <% include ./partials/messages %>
+				<input type="password" name="password" placeholder="Create New Password" required/>
+                <input type="password" name="confirmPassword" placeholder="Confirm New Password" required/>
+                <input type="hidden" name="userID" value=" <%= adminID %> "/>
+                <input type="hidden" name="tokenID" value=" <%= adminToken %> "/>
+				<button class="submit"> CONFIRM PASSWORD </button>
+			</form>
+		</div>
+	</div>
+	 <% include ./partials/disappearFlask %>
+     <% include ./partials/particlejs %>  
+     <!-- id="particles-js" -->
+</body>
+</html>

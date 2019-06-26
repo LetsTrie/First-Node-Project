@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/scss/navbar.css">    
+    <link rel="stylesheet" type="text/css" href="/scss/myprofile.css">
+    
+    <title>My Profile</title>
+</head>
+<body>
+    
+    <% console.log("HI " + success_msg) %>
+    
+    <% include ./partials/navbar %>
+    <% include ./partials/messages %>
+
+    <main class="userdata"> 
+        <h1> Hi <%= adminData.username %> !! </h1>
+        <div> <b>Your Registration Number is: </b><%= adminData.regNo %> </div>
+        <div> <b> Your Email is: </b> <%= adminData.email %> </div>
+        <div> <b> Your Profile Picture: </b> </div>
+        <img src="/profilePicture/<%=adminData.propicURL%>">
+        
+        <!-- <form action="/homepage/myprofile" method="POST" enctype="multipart/form-data">
+            <div class="propic">
+                <button> Change profile picture </button>
+                <input type="file" name="image" required>
+            </div>
+        </form> -->
+
+    </main>
+
+    <% include ./partials/disappearFlask %>
+</body>
+</html>
