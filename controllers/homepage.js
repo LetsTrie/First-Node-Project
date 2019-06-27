@@ -18,7 +18,8 @@ module.exports.GET_openpost = (req, res, next) => {
         //     article: article
         // });
         return res.render("eachpost", {
-            article: article
+            article: article,
+            userID: req.user._id
         });
 
     }).catch(err => console.log("GOT ERROR"));
