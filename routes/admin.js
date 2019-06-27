@@ -21,8 +21,4 @@ router.post("/newpass", adminController.POST_newpass);
 
 router.get("/logout", ensureAuthenticated, adminController.GET_Logout);
 
-router.get("/homepage", ensureAuthenticated, (req, res, next) => res.render("homepage", {
-    adminData: req.user
-}));
-
 module.exports = router;

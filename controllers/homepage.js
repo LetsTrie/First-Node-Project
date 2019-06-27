@@ -8,15 +8,11 @@ module.exports.GET_myProfile = (req, res, next) => res.render("myprofile", {
 
 module.exports.GET_openpost = (req, res, next) => {
     const token = req.params.token;
-    console.log(token);
+    // console.log(token);
     articleModel.findOne({
         _id: token,
     })
     .then(article => {
-        console.log("Hi :: => " + article);
-        // return res.render("eachpost", {
-        //     article: article
-        // });
         return res.render("eachpost", {
             article: article,
             userID: req.user._id
@@ -31,14 +27,32 @@ module.exports.GET_openpost = (req, res, next) => {
     // June 24 2017 at 6:15 PM 
 }
 
-module.exports.GET_blogs = (req, res, next) => {
+module.exports.GET_all_blogs = (req, res, next) => {
     let posts = [];
     articleModel.find().sort({date:-1}) .then(art => {
-        return res.render("blogs", {art: art});
+        return res.render("blogs", {
+            art: art,
+            whosePost: "all"
+        });
+    })
+    .catch(err => returnError({ msg: "Getting Error In Getting Data" }))
+};
+
+module.exports.GET_my_blogs = (req, res, next) => {
+    let posts = [];
+    articleModel.find({
+        userID: req.user._id
+    }).sort({date:-1}) .then(art => {
+        return res.render("blogs", {
+            art: art,
+            whosePost: "mine"
+
+        });
         // console.log(art);
     })
     .catch(err => returnError({ msg: "Getting Error In Getting Data" }))
 };
+
 module.exports.GET_createnewblog = (req, res, next) => res.render("createnewblog");
 module.exports.POST_createnewblog = (req, res, next) => {
     const returnError = (err) => {
@@ -50,7 +64,7 @@ module.exports.POST_createnewblog = (req, res, next) => {
     const { error } = blogvalidations(data);
     if (error) return returnError({msg : error});
     if (!data.title || !data.editor) return returnError({msg : "Please Fillup the form properly"});
-    console.log(req.user);
+    // console.log(req.user);
     const newArticle = new articleModel({
         userID   : req.user._id,
         username : req.user.username,
@@ -62,8 +76,8 @@ module.exports.POST_createnewblog = (req, res, next) => {
     newArticle.save().then(user => {
         req.flash('success_msg', 'Your Blog is published');
         // return res.redirect("/admin/login");
-        console.log("OKAY");
-        return res.redirect("/homepage/blogs");
+        // console.log("OKAY");
+        return res.redirect("/homepage/blogs/all");
         //  homepage/myprofile dile kaj kore na keno??
     })
     .catch(err => returnError({

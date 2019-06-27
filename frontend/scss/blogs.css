@@ -81,7 +81,7 @@ img {
 }
 
 .allposts {
-    padding: 2% 0;
+    padding: 1% 0 2% 0;
     width: 95%;
     margin: 0 auto;
     font-size: 20px;
@@ -124,6 +124,40 @@ img {
 
 .post__time {
     padding: 10px;
+}
+
+.myPosts {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3%;
+
+}
+
+.myPosts__a {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    background: #e7455b;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px #3668ce;
+    box-shadow: 0px 4px 15px -5px rgb(76, 117, 250);
+    transition: background .3s;
+    opacity: 0;
+    animation: animate-posts-odd 1s 2.7s ease-out forwards;
+}
+
+.myPosts__a:hover {
+    color: white;
+    text-decoration: none;
+    outline: none;
+    background: #a82335;
 }
 
 .animated-odd {

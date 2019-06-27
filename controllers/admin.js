@@ -65,7 +65,7 @@ module.exports.POST_Register = (req, res, next) => {
 module.exports.GET_Login = (req, res, next) => res.render("login");
 module.exports.POST_Login = (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/admin/homepage',
+        successRedirect: '/homepage/blogs/all',
         failureRedirect: '/admin/login',
         failureFlash: true
     })(req, res, next);

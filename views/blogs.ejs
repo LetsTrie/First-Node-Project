@@ -16,8 +16,6 @@
     <style>
         
 
-
-
     
     </style>
 
@@ -29,7 +27,11 @@
         <div class="createNewPost">
             <a class = "goblogpage" href="/homepage/createnewblog"> POST AN ARTICLE </a>
         </div>
-
+        <div class="myPosts">
+            <% if( whosePost == "mine" ) { %>  <a class = "myPosts__a" href="/homepage/blogs/all"> All Articles </a>
+            <%} else {%> <a class = "myPosts__a" href="/homepage/blogs/mine"> My Articles </a>
+            <% } %>
+        </div>
     <% include ./partials/messages %>
     
     <section class="allposts">

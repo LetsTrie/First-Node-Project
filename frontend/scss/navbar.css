@@ -67,7 +67,7 @@
 .animate {
     animation: animate-left-to-right 1s cubic-bezier(0, 1.09, .25, 1.5) forwards;
 }
-
+/* 
 .a1 {
     animation-delay: 0.5s;
 }
@@ -81,8 +81,8 @@
 }
 .a5 {
     animation-delay: 1.1s;
-}
+} */
 
 .a6 {
-    animation-delay: 1.3s;
+    animation-delay: 0.5s;
 }
