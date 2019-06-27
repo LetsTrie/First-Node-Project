@@ -7,7 +7,7 @@ const validations = require("../validations/admin");
 const sendResetPassword = require("../models/sendingMail").sendResetPassword;
 const regValidations = validations.regValidation;
 
-let errors = [];
+
 
 module.exports.GET_Register = (req, res, next) => res.render("register");
 module.exports.POST_Register = (req, res, next) => {
@@ -31,7 +31,11 @@ module.exports.POST_Register = (req, res, next) => {
     }
 
     const { error } = regValidations(data);
-    if (error) return returnError({msg : "Data is not valid"});
+    if (error) {
+        let errors = [];
+        console.log(error);
+        return returnError({msg : "Data is not valid"});
+    }
     if( !req.file ) return returnError({ msg: "Give Some Valid File" });
     if (data.password !== data.confirmPassword) return returnError({ msg: "Password Not Matching" });
 
@@ -79,8 +83,9 @@ module.exports.GET_Logout = (req, res, next) => {
 
 module.exports.GET_forgetpass = (req, res, next) => res.render("forgetpass");
 module.exports.POST_forgetpass = (req, res, next) => {
-    errors = [];
+    
     const returnError = (err) => {
+        let errors = [];
         errors.push(err);
         return res.render("forgetpass", { errors });
     }

@@ -105,6 +105,10 @@ img {
     /* Not Working */
 }
 
+.each_post:first-child {
+    margin-top: 0px; 
+}
+
 .user_img img {
     height: 120px;
     max-width: 120px;
@@ -150,7 +154,7 @@ img {
     box-shadow: 0px 4px 15px -5px rgb(76, 117, 250);
     transition: background .3s;
     opacity: 0;
-    animation: animate-posts-odd 1s 2.7s ease-out forwards;
+    animation: animate-posts-odd 1s 2.2s ease-out forwards;
 }
 
 .myPosts__a:hover {

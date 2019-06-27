@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="/scss/navbar.css">
@@ -92,6 +92,9 @@
             text-decoration: none;
             color: black;
         }
+        .MIDDLE{
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -100,32 +103,44 @@
     <% include ./partials/messages %>
 
     <section class="post">
+        <div class="Flash_msg"> </div>
         <div class="post__title">
             <p> <%= article.postTitle %> </p>
         </div>
 
-        <div class="nameNdate">
-            <div class="name">
+        <div class="nameNdate" style="font-size: 20px;">
+            <div class="name" style="margin-left: 10px;">
+                <i class="fa fa-user"></i>
                 <%= article.username %>
             </div>
-            <div class="date">
-                <%= article.date %>
+            <div class="date" style="margin-right: 10px;">
+                <i class="fa fa-clock-o"></i>
+
+                <% let parsedTime = article.date.toString().trim().split(" "); %>
+                <%= parsedTime[1] + " " + parsedTime[2] + " " + parsedTime[3] + " " + parsedTime[4]; %>
             </div>
         </div>
         
         <% if(userID.toString().trim() === article.userID.toString().trim()) { %>
             <div class="buttons">
-                <a href = "#" class="EDIT"> EDIT POST </a>
-                <a href = "#" class="DELETE"> DELETE POST </a>
+                <a href = "/homepage/blogs/update/<%=article._id%>" class="EDIT"> EDIT POST </a>
+                <a href = "/homepage/blogs/delete/<%=article._id%>" class="DELETE"> DELETE POST </a>
             </div>
         <% } %>
 
-        <div class="content">
+        <div class="content" style="margin-top: 50px;">
                 <%- article.postContent %> 
         </div>
     </section>
 
     <% include ./partials/disappearFlask %>
+
+
+    <script>
+        const slct = $('img').parent().parent()
+        $(slct).addClass("MIDDLE");
+    </script>
 </body>
 </html>
 
+<!-- /blogs/delete/:token -->

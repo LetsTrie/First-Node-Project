@@ -19,6 +19,7 @@
         .cke_toolbar {
             zoom: 1.1;
         }
+        
     </style>
 
 </head>
@@ -29,17 +30,32 @@
     <% include ./partials/messages %>
 
     <header class="cnb_header"> <h1> POST AN ARTICLE !!!! </h1> </header>
+    
+    <% if(typeof post != 'undefined') { %>
+        <form class="cnb_form" method="POST" action="/homepage/blogs/afterDeletePost">
+    <% } else { %>
+        <form class="cnb_form" method="POST" action="/homepage/createnewblog">
+    <% }%>
 
-    <form class="cnb_form" method="POST" action="/homepage/createnewblog">
         <div> 
             <span style="display: block"> Title:  </span>
-            <input type="text" name="title" required> 
+            <% if(typeof post != 'undefined') { %>
+                <input name="hiddenID" value="<%=post._id%>" type="hidden">
+                <input type="text" name="title" value="<%-post.postTitle%>" required> 
+            <% } else { %>
+                <input type="text" name="title" required> 
+            <% }%>
         </div>
         <div> 
             <div class="content" style="display: flex; justify-content: space-between;">
                 <span> Content: </span> <span style="align-self: flex-end; font-size: 14px; font-weight: 300;">For Easier writting, Click on the Full Screen Button - (Last row cross sign) </span>
             </div>
-            <div class="ck"> <textarea rows="20" cols="80" id="editor" name="editor"  required></textarea> </div>
+            <% if(typeof post != 'undefined') { %>
+                <div class="ck"> <textarea rows="20" cols="80" id="editor" name="editor" required> <%-post.postContent%> </textarea> </div>
+            <% } else { %>
+                <div class="ck"> <textarea rows="20" cols="80" id="editor" name="editor"  required></textarea> </div>
+            <% }%>
+
         </div>
         <div class="cnb_submit">
             <button> SUBMIT </button>
@@ -51,6 +67,10 @@
     <script src="/js/ckeditor/ckeditor.js"> </script>
     <script> 
        CKEDITOR.replace( 'editor' ); 
+
+       
+
+
     </script> 
 </body>
 </html>

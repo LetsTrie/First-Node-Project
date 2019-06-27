@@ -4,8 +4,6 @@ const app = express();
 
 const flash = require('connect-flash');
 
-console.log(Date.now());
-
 // env variables
 const dotenv = require("dotenv");
 dotenv.config();
@@ -107,7 +105,6 @@ app.use((req, res, next) => res.render("error404"));
 // port
 
 let port = process.env.PORT || 3000;
-console.log(port);
 app.listen(port, () => "I am Listening");
 // listen EADDRINUSE: address already in use :::3000
 // Solution : https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-already-in-use-kill-server

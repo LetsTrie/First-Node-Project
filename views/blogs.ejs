@@ -13,16 +13,9 @@
     <link rel="stylesheet" type="text/css" href="/scss/blogs.css">
     <title>Blogs</title>
 
-    <style>
-        
-
-    
-    </style>
-
 </head>
 <bod>
     <% include ./partials/navbar %>
-
     <main>
         <div class="createNewPost">
             <a class = "goblogpage" href="/homepage/createnewblog"> POST AN ARTICLE </a>
@@ -32,46 +25,32 @@
             <%} else {%> <a class = "myPosts__a" href="/homepage/blogs/mine"> My Articles </a>
             <% } %>
         </div>
+    
     <% include ./partials/messages %>
     
     <section class="allposts">
-        <% art.forEach(article => { %>
+        
+        <%art.forEach(article => { %>
             <div class="each_post">
                 <input type="hidden" value="<%=article._id%>" class="hiddenData">
                 <div class="user_img">
-                    <img src="/profilePicture/<%=article.userPropicURL  %> " alt=" <%= article.userName%> " class="user_image">
+                    <img style = "object-fit: cover;" src="/profilePicture/<%=article.userPropicURL  %> " alt=" <%= article.userName%> " class="user_image">
                 </div>
                 <div class="other_details">
                     <div class="title" id = "titleID"> <strong><%= article.username%></strong>&nbsp;just posted an Article on&nbsp;<strong>"<%= article.postTitle%>" </strong> </div>
-                    <div class="post__time"> <%= article.date%></div>
+                    <% let parsedTime = article.date.toString().trim().split(" "); %>
+                    <div class="post__time"> 
+                        <%= parsedTime[1] + " " + parsedTime[2] + " " + parsedTime[3] + " " + parsedTime[4]; %>
+                    </div>
                 </div>
             </div>           
         <% }) %>
 
     </section>
 
-    <!-- <div class = "remain r1">
-
-        <h1> "POST AN ARTICLE" is working..... </h1>
-        <h1> After learning jQuery AJAX, will do the "Article showing" part.... </h1>
-        <h1> Now Working On "Courses".... </h1>
-
-    </div>
-
-
-    <div class = "remain r2">
-
-        <h1> "POST AN ARTICLE" is working..... </h1>
-        <h1> After learning jQuery AJAX, will do the "Article showing" part.... </h1>
-        <h1> Now Working On "Courses".... </h1>
-
-    </div> -->
-
     </main>
 
     <% include ./partials/disappearFlask %>
-
-    <script type="text/javascript" src="/js/clamp.js"></script>
 
     <script>
         $(".allposts .each_post:odd").addClass("animated-even");
